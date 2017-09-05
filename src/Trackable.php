@@ -7,29 +7,29 @@ trait Trackable
     /** @var int $statusId */
     protected $statusId;
 
-    protected function setProgressMax(int $value)
+    protected function setProgressMax($value)
     {
         $this->update(['progress_max' => $value]);
     }
 
-    protected function setProgressNow(int $value, int $every = 1)
+    protected function setProgressNow($value, $every = 1)
     {
         if ($value % $every == 0) {
             $this->update(['progress_now' => $value]);
         }
     }
 
-    protected function setInput(array $value)
+    protected function setInput($value)
     {
         $this->update(['input' => $value]);
     }
 
-    protected function setOutput(array $value)
+    protected function setOutput($value)
     {
         $this->update(['output' => $value]);
     }
 
-    protected function update(array $data)
+    protected function update($data)
     {
         $task = JobStatus::find($this->statusId);
 
