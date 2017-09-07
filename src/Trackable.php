@@ -15,8 +15,9 @@ trait Trackable
     protected function setProgressNow($value, $every = 1)
     {
         if ($value % $every == 0) {
-            $this->update(['progress_now' => $value]);
+            return $this->update(['progress_now' => $value]);
         }
+        return null;
     }
 
     protected function setInput($value)
@@ -35,6 +36,10 @@ trait Trackable
 
         if ($task != null) {
             return $task->update($data);
+        }
+        else
+        {
+            return null;
         }
     }
 
